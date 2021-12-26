@@ -17,9 +17,32 @@ location /api/ {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_pass   http://localhost:5000/;
   }
+  error_page 405 =200 @405;
+      location @405 {
+          proxy_method GET;
+          proxy_next_upstream http_500 http_502 http_503 error timeout invalid_header;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-For $remote_addr;
+          proxy_pass   http://localhost:5000/;
+      }
 }
 
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 . ~/.nvm/nvm.sh
 nvm install node
+
+upstream static_backend {
+    server localhost:80;
+}
+
+server {
+    listen 80;
+    # ...
+    error_page 405 =200 @405;
+    location @405 {
+        root /srv/http;
+        proxy_method GET;
+        proxy_pass http://localhost:5000;
+    }
+}

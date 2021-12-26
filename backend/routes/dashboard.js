@@ -1,7 +1,7 @@
 const {insertContact, searchContactDuplication, searchContact} = require("../queries/ContactQuery");
 const router = require('express').Router();
 
-router.post("/", async(req, res) => {
+router.put("/", async(req, res) => {
     try{
         let rows = await searchContact(req.body.user_id)
         return res.status(200).json({message: "Success", data: rows});
@@ -12,7 +12,7 @@ router.post("/", async(req, res) => {
     }
 });
 
-router.post("/add", async(req, res) => {
+router.put("/add", async(req, res) => {
     try{
         let rows = await searchContactDuplication(req.body.name, req.body.user_id);
         if (rows.length !== 0){
