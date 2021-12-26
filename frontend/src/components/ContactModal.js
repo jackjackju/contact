@@ -35,7 +35,7 @@ function ContactModal ({token, user_id}) {
         });
 
         try{
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/dashboard/add`, body, config);
+            const res = await axios.post(`/api/dashboard/add`, body, config);
             setMessage("");
             setNotice("");
             if (res.data.message !== "Success"){

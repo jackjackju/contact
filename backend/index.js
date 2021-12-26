@@ -9,10 +9,10 @@ const verifyToken = require('./routes/verifyToken');
 // Middlewares
 app.use(express.json());
 app.use(cors());
-app.use("/api/user", authRoutes);
+app.use("/user", authRoutes);
 
 // protected with token
-app.use("/api/dashboard", verifyToken, dashBoardRoutes);
+app.use("/dashboard", verifyToken, dashBoardRoutes);
 
 const pool = require("./db");
 

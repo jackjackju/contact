@@ -1,7 +1,7 @@
 server {
   listen 80;
   listen [::]:80;
-  root /home/ec2-user/contact/frontend/build;
+  root /home/ubuntu/contact/frontend/build;
   location / {
     try_files $uri /index.html;
   }
@@ -18,3 +18,8 @@ location /api/ {
         proxy_pass   http://localhost:5000/;
   }
 }
+
+
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node

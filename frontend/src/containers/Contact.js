@@ -24,7 +24,7 @@ function Contact ({token, user_id}) {
             token: token
         });
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/dashboard`, body, config);
+            const res = await axios.post(`/api/dashboard`, body, config);
             setAuth(res.data.message);
             console.log(res);
             if (res.data.message === "Success") {

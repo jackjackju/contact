@@ -19,7 +19,7 @@ export const login = (username, password) => async dispatch => {
     const body = JSON.stringify({ username, password });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/login`, body, config);
+        const res = await axios.post(`/api/user/login`, body, config);
 
         if (res.data.message === "Success") {
             localStorage.setItem("token", res.data.token);
@@ -51,7 +51,7 @@ export const register = (username, password, email) => async dispatch => {
     const body = JSON.stringify({ username, password, email });
 
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/user/register`, body, config);
+        const res = await axios.post(`/api/user/register`, body, config);
 
         if (res.data.message === "Success") {
             localStorage.setItem("token", res.data.token);
