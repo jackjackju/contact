@@ -7,7 +7,7 @@ require('dotenv').config()
 
 
 //Sign Up Route
-router.put("/register", async (req, res) => {
+router.post("/register", async (req, res) => {
     try{
         let rows = await searchUser(req.body.username);
         if (rows.length !== 0){
@@ -29,7 +29,7 @@ router.put("/register", async (req, res) => {
 
 
 // Login Route
-router.put("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
     try{
         let rows = await searchUser(req.body.username);
         if (rows.length !== 1){
