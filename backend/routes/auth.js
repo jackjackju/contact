@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
-const { registerValidation, loginValidation } = require("../validation");
 const pool = require("../db");
 const {searchUser, insertUser} = require("../queries/UserQuery");
 require('dotenv').config()
