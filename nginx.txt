@@ -1,7 +1,7 @@
 server {
-  listen 80; 
-  listen [::]:80; 
-  root /home/student/weplay_project/react/build;
+  listen 80;
+  listen [::]:80;
+  root /home/ec2-user/contact/frontend/build;
   location / {
     try_files $uri /index.html;
   }
