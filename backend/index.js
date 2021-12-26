@@ -10,6 +10,7 @@ const verifyToken = require('./routes/verifyToken');
 app.use(express.json());
 app.use(cors());
 app.use("/user", authRoutes);
+app.use("/api/user", authRoutes);
 
 // protected with token
 app.use("/dashboard", verifyToken, dashBoardRoutes);
