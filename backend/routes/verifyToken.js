@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const {searchUser, searchUserID} = require("../queries/UserQuery");
 require('dotenv').config()
-// Middleware to validate token
 
+// Middleware to validate token
 const verifyToken = async (req, res, next) => {
   const token = req.body.token;
   if(!token){

@@ -1,6 +1,7 @@
 const {insertContact, searchContactDuplication, searchContact} = require("../queries/ContactQuery");
 const router = require('express').Router();
 
+//retrieve contact list
 router.post("/", async(req, res) => {
     try{
         let rows = await searchContact(req.body.user_id)
@@ -12,6 +13,7 @@ router.post("/", async(req, res) => {
     }
 });
 
+//add new contact
 router.post("/add", async(req, res) => {
     try{
         let rows = await searchContactDuplication(req.body.name, req.body.user_id);

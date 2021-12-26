@@ -8,6 +8,7 @@ import {
     LOGOUT_FAIL
 } from './types';
 
+//login function
 export const login = (username, password) => async dispatch => {
     const config = {
         headers: {
@@ -21,6 +22,7 @@ export const login = (username, password) => async dispatch => {
     try {
         const res = await axios.post(`/api/user/login`, body, config);
 
+        //check response
         if (res.data.message === "Success") {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user_id", res.data.user_id);
@@ -40,6 +42,7 @@ export const login = (username, password) => async dispatch => {
     }
 };
 
+//Register function
 export const register = (username, password, email) => async dispatch => {
     const config = {
         headers: {
@@ -53,6 +56,7 @@ export const register = (username, password, email) => async dispatch => {
     try {
         const res = await axios.post(`/api/user/register`, body, config);
 
+        //Check response
         if (res.data.message === "Success") {
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user_id", res.data.user_id);
